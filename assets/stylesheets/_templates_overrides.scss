@@ -1,0 +1,15 @@
+/**
+ * MoJ Template Overrides/tweaks
+ */
+
+#global-header .header-proposition a#proposition-name:hover {
+	text-decoration: none;
+}
+
+.phase-banner {
+	@include phase-banner;
+}
+
+.footer-meta p {
+	@include core-16;
+}

@@ -2,22 +2,18 @@ module.exports = function(grunt) {
 
   'use strict';
 
+  // Auto-load tasks
+  require('load-grunt-tasks')(grunt);
+
   /**
    * Default source paths
    * @type {Object}
    */
   var srcPaths = {
-    styles: {
-      // Dependencies should be loaded in main stylesheet
-      // using @import directives
-      app: 'assets/stylesheets/'
-    },
-    scripts: {
-      vendor: 'assets/javascripts/vendor/',
-      govuk: 'node_modules/govuk_frontend_toolkit/javascripts/',
-      plugins: 'assets/javascripts/plugins/',
-      app: 'assets/javascripts/'
-    }
+    templates: 'templates',
+    styles: 'assets/stylesheets/',
+    scripts: 'assets/javascripts/',
+    images: 'assets/images/'
   };
 
   /**
@@ -25,8 +21,10 @@ module.exports = function(grunt) {
    * @type {Object}
    */
   var destPaths = {
-    css: 'static/assets/stylesheets/',
-    js: 'static/assets/javascripts/'
+    templates: 'public_html/',
+    styles: 'public_html/assets/stylesheets/',
+    scripts: 'public_html/assets/javascripts/',
+    images: 'public_html/assets/images/'
   };
 
   /**
@@ -34,15 +32,24 @@ module.exports = function(grunt) {
    * @type {Object}
    */
   grunt.initConfig({
+    
     sass: {
-      src: [srcPaths.styles.app + 'app.scss'],
-      dest: destPaths.css + 'app.css'
+      files: {
+        src: [srcPaths.styles + 'app.scss'],
+        dest: destPaths.styles + 'app.css'
+      },
+      options: {
+        loadPath: [
+          'node_modules/govuk_frontend_toolkit/stylesheets/',
+          'bower_components/moj_elements/dist/stylesheets/'
+        ]
+      }
     },
+    
     jshint: {
       files: [
         'Gruntfile.js',
-        srcPaths.scripts.plugins + '**/*.js',
-        srcPaths.scripts.app + 'app.js'
+        srcPaths.scripts + 'app.js'
       ],
       options: {
         globals: {
@@ -50,66 +57,76 @@ module.exports = function(grunt) {
         }
       }
     },
+    
     concat: {
-      src: [
-        srcPaths.scripts.vendor + '**/*.js',
-        srcPaths.scripts.govuk + '**/*.js',
-        srcPaths.scripts.plugins + '**/*.js',
-        srcPaths.scripts.app + 'app.js'
-      ],
-      dest: destPaths.js + 'app.js',
+      files: {
+        src: [srcPaths.scripts + 'plugins/**.*.js', srcPaths.scripts + 'app.js'],
+        dest: destPaths.scripts + 'application.js'
+      },
       options: {
         separator: ';',
       }
     },
+    
     imagemin: {
       files: {
         expand: true,
-        cwd: 'assets/images/',
+        cwd: srcPaths.images,
         src: ['**/*.{png,jpg,gif}'],
-        dest: 'static/assets/images/'
+        dest: destPaths.images
       }
     },
+    
     watch: {
       sass: {
-        files: [srcPaths.styles.app],
+        files: [srcPaths.styles + '**/*.scss'],
         tasks: ['sass']
       },
       jshint: {
         files: [
-          'gruntfile.js',
-          srcPaths.scripts.plugins + '**/*.js',
-          srcPaths.scripts.app + 'app.js'
+          'Gruntfile.js',
+          srcPaths.scripts + '**/*.js'
         ],
         tasks: ['jshint']
       },
       js: {
-        files: [
-          srcPaths.scripts.vendor + '**/*.js',
-          srcPaths.scripts.govuk + '**/*.js',
-          srcPaths.scripts.plugins + '**/*.js',
-          srcPaths.scripts.app + 'app.js'
-        ],
+        files: [srcPaths.scripts + '**/*.js'],
         tasks: ['concat']
+      }
+    },
+
+    connect: {
+      server: {
+        options: {
+          hostname: 'localhost',
+          port: 9000,
+          base: 'public_html',
+          keepalive: true
+        }
+      }
+    },
+
+    concurrent: {
+      dev: {
+        tasks: ['connect:server', 'watch'],
+        options: {
+          logConcurrentOutput: true
+        }
       }
     }
   });
 
-  // Load tasks
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
+
+  // Register tasks
+  grunt.registerTask('default', ['dev']);
+
+  grunt.registerTask('build', 'Lint, test and compile prod-ready assets', [
+    'sass',
+    'jshint',
+    'concat',
+    'newer:imagemin'
+  ]);
   
-
-  grunt.loadNpmTasks('grunt-newer');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-
-
-
-  // Wrapper tasks
-  grunt.registerTask('build', 'Lint, test and compile prod-ready assets', ['sass', 'jshint', 'concat', 'newer:imagemin']);
-  
-  grunt.registerTask('default', ['build']);
+  grunt.registerTask('server', 'Fire up the dev static server and start watch task', ['concurrent:dev']);
 
 };

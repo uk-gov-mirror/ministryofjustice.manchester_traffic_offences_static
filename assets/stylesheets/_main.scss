@@ -1,0 +1,13 @@
+
+.container {
+	@extend %site-width-container;
+	min-height: 400px;
+}
+
+.phase-banner .phase-tag {
+	vertical-align: baseline;
+}
+
+.page-header p {
+	@include core-19;
+}
