@@ -135,14 +135,14 @@ module.exports = function(grunt) {
 
 
   // Register tasks
-  grunt.registerTask('default', ['dev']);
+  grunt.registerTask('default', ['server']);
 
   grunt.registerTask('build', 'Lint, test and compile prod-ready assets', [
     'assemble',
     'sass',
     'jshint',
     'concat',
-    'newer:imagemin'
+    'imagemin'
   ]);
   
   grunt.registerTask('server', 'Fire up the dev static server and start watch task', ['concurrent:dev']);

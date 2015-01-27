@@ -16,14 +16,23 @@ If you haven't already, you'll also need to install the Grunt Command-line Inter
 npm install -g grunt-cli
 ```
 
+## Local development
 
-Then run a local server:
+Run the local server:
 
 ```
 grunt server
 ```
 
 The server Grunt task will also watch assets and templates folders for new/changed files. Open `http://localhost:9000/` in your browser to view generated files.
+
+## Build
+
+The assets and HTML files can also be generated without running the server or the `watch` task. Simply call the `build` Grunt task:
+
+```
+grunt build
+```
 
 ## Deployment
 
