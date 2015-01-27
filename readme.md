@@ -18,6 +18,10 @@ grunt server
 
 The server Grunt task will also watch assets and templates folders for new/changed files. Open `http://localhost:9000/` in your browser to view generated files.
 
+## Deployment
+
+The `/public_html` directory contains all generated assets and HTML pages, ready to be uploaded to their relevant location. When uploading one page on its own, remember to include the assets directory if necessary.
+
 ---
 
 ## Usage
