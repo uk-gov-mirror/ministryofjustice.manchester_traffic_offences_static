@@ -23,14 +23,14 @@
   display: block;
   clear: both; }
 
-#content, .container {
+#content, #global-cookie-message > div, .container {
   max-width: 960px;
   margin: 0 15px; }
   @media (min-width: 641px) {
-    #content, .container {
+    #content, #global-cookie-message > div, .container {
       margin: 0 30px; } }
   @media (min-width: 1020px) {
-    #content, .container {
+    #content, #global-cookie-message > div, .container {
       margin: 0 auto; } }
 
 .grid-row {
@@ -89,14 +89,14 @@
   display: block;
   clear: both; }
 
-#content, .container {
+#content, #global-cookie-message > div, .container {
   max-width: 960px;
   margin: 0 15px; }
   @media (min-width: 641px) {
-    #content, .container {
+    #content, #global-cookie-message > div, .container {
       margin: 0 30px; } }
   @media (min-width: 1020px) {
-    #content, .container {
+    #content, #global-cookie-message > div, .container {
       margin: 0 auto; } }
 
 .grid-row {
@@ -524,14 +524,14 @@ details .panel-indent {
   display: block;
   clear: both; }
 
-#content, .container {
+#content, #global-cookie-message > div, .container {
   max-width: 960px;
   margin: 0 15px; }
   @media (min-width: 641px) {
-    #content, .container {
+    #content, #global-cookie-message > div, .container {
       margin: 0 30px; } }
   @media (min-width: 1020px) {
-    #content, .container {
+    #content, #global-cookie-message > div, .container {
       margin: 0 auto; } }
 
 .grid-row {
@@ -606,14 +606,14 @@ details .panel-indent {
   display: block;
   clear: both; }
 
-#content, .container {
+#content, #global-cookie-message > div, .container {
   max-width: 960px;
   margin: 0 15px; }
   @media (min-width: 641px) {
-    #content, .container {
+    #content, #global-cookie-message > div, .container {
       margin: 0 30px; } }
   @media (min-width: 1020px) {
-    #content, .container {
+    #content, #global-cookie-message > div, .container {
       margin: 0 auto; } }
 
 .grid-row {
