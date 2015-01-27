@@ -10,7 +10,14 @@ Install dependencies (requires [node.js](http://nodejs.org/)):
 npm install
 ```
 
-Run local server:
+If you haven't already, you'll also need to install the Grunt Command-line Interface to run grunt from the terminal:
+
+```
+npm install -g grunt-cli
+```
+
+
+Then run a local server:
 
 ```
 grunt server
