@@ -8,6 +8,10 @@
 
 .phase-banner {
 	@include phase-banner;
+
+	.phase-tag {
+		vertical-align: baseline;
+	}
 }
 
 .footer-meta p {

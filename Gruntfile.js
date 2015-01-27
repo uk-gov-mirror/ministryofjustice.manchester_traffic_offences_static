@@ -2,8 +2,9 @@ module.exports = function(grunt) {
 
   'use strict';
 
-  // Auto-load tasks
+  // Load tasks
   require('load-grunt-tasks')(grunt);
+  grunt.loadNpmTasks('assemble');
 
   /**
    * Default source paths
@@ -32,7 +33,19 @@ module.exports = function(grunt) {
    * @type {Object}
    */
   grunt.initConfig({
-    
+
+    assemble: {
+      options: {
+        partials: ['templates/partials/**/*.hbs'],
+        layout: ['templates/layouts/default.hbs'],
+        flatten: true
+      },
+      files: {
+        src: ['templates/pages/*.hbs'],
+        dest: 'public_html'
+      }
+    },
+
     sass: {
       files: {
         src: [srcPaths.styles + 'app.scss'],
@@ -78,6 +91,10 @@ module.exports = function(grunt) {
     },
     
     watch: {
+      assemble: {
+        files: ['templates/**/*.hbs'],
+        tasks: ['assemble']
+      },
       sass: {
         files: [srcPaths.styles + '**/*.scss'],
         tasks: ['sass']
@@ -121,6 +138,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['dev']);
 
   grunt.registerTask('build', 'Lint, test and compile prod-ready assets', [
+    'assemble',
     'sass',
     'jshint',
     'concat',

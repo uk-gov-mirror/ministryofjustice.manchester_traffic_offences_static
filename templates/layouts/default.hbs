@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
-    <title>Service unavailable - GOV.UK - The best place to find government services and information</title>
+    <title>{{#if title}}{{title}} - {{/if}}GOV.UK - The best place to find government services and information</title>
 
     <script type="text/javascript">
       (function(){if(navigator.userAgent.match(/IEMobile\/10\.0/)){var d=document,c="appendChild",a=d.createElement("style");a[c](d.createTextNode("@-ms-viewport{width:auto!important}"));d.getElementsByTagName("head")[0][c](a);}})();
@@ -61,7 +61,7 @@
 
   </head>
 
-  <body class="service ">
+  <body class="service {{phaseTag}}">
     
     <script type="text/javascript">document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 
@@ -89,7 +89,7 @@
 
         <div class="header-proposition">
           <div class="content">
-            <a href="" id="proposition-name">Make your plea: Traffic offences</a>
+            <a href="{{propositionLink}}" id="proposition-name">{{propositionName}}</a>
           </div>
         </div>
 
@@ -110,18 +110,7 @@
     <div id="wrapper" role="main">
       <div class="container">
         
-        
-
-<div class="phase-banner">
-  <p><a href="https://www.gov.uk/service-manual/phases/alpha.html" class="phase-tag">alpha</a> This is a new service - <a href="/feedback/?next=terms">your feedback</a> will help us to improve it</p>
-</div>
-<!--end phase-banner-->
-
-<header class="page-header">
-  <h1>We are experiencing technical difficulties</h1>
-</header>
-
-<p class="lede">The online plea system is not available right now, but we're working hard to get things up and running again. Try again later.</p>
+        {{> body}}
 
       </div>
     </div>
