@@ -38,7 +38,9 @@ module.exports = function(grunt) {
       options: {
         partials: ['templates/partials/**/*.hbs'],
         layout: ['templates/layouts/default.hbs'],
-        flatten: true
+        data: 'templates/data.yml',
+        helpers: ['helpers/**/*.js'],
+        flatten: true,
       },
       files: {
         src: ['templates/pages/*.hbs'],
@@ -92,7 +94,7 @@ module.exports = function(grunt) {
     
     watch: {
       assemble: {
-        files: ['templates/**/*.hbs'],
+        files: ['templates/**/*.hbs','templates/data.yml'],
         tasks: ['assemble']
       },
       sass: {
