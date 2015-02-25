@@ -1,0 +1,27 @@
+topOfPage:
+pageTitle: 'Make your plea: Traffic offences'
+assetPath: /static/
+stylesheets: |
+  <link rel="stylesheet" type="text/css" href="/static/stylesheets/application.css">
+  <!--[if IE 6]><link href="/static/stylesheets/application-ie6.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+  <!--[if IE 7]><link href="/static/stylesheets/application-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+  <!--[if IE 8]><link href="/static/stylesheets/application-ie8.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+head:
+bodyClasses:
+cookieMessage:
+headerClass:
+insideHeader:
+proposition_title: 'Make your plea: Traffic offences'
+afterHeader:
+beforeContent:
+footerTop: <p class="footer-top"><a href="/terms-and-conditions-and-privacy-policy">Terms and Conditions and Privacy Policy</a></p>
+footerSupportLinks: |
+  <li><a href="http://www.gov.uk/help">Help</a></li>
+  <li><a href="http://www.gov.uk/help/cookies">Cookies</a></li>
+  <li><a href="http://www.gov.uk/contact">Contact</a></li>
+  <li><a href="http://www.gov.uk/cymraeg" lang="cy">Cymraeg</a></li>
+javascripts: |
+  <script src="/static/javascripts/vendor/jquery.details.min.js" type="text/javascript"></script>
+  <script src="/static/javascripts/govuk.js" type="text/javascript"></script>
+  <script src="/static/javascripts/application.js" type="text/javascript"></script>
+bodyEnd:
