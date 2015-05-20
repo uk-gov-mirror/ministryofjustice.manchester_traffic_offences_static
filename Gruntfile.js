@@ -6,19 +6,22 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
   grunt.loadNpmTasks('assemble');
 
+  // var pleas_dir = '../manchester_traffic_offences_pleas/manchester_traffic_offences/';
+  var pleas_dir = '';
+
   var paths = {
     dest_dir: 'public_html/assets/',
-    src_dir: 'assets-src/',
-    styles: 'assets-src/stylesheets/',
+    src_dir: pleas_dir + 'assets-src/',
+    styles: pleas_dir + 'assets-src/stylesheets/',
     scripts: [
-      'assets-src/javascripts/shims/**/*.js',
-      'assets-src/javascripts/modules/**/*.js',
-      'assets-src/javascripts/application.js'
+      pleas_dir + 'assets-src/javascripts/shims/**/*.js',
+      pleas_dir + 'assets-src/javascripts/modules/**/*.js',
+      pleas_dir + 'assets-src/javascripts/application.js'
     ],
-    vendor_scripts: 'assets-src/javascripts/vendor/',
+    vendor_scripts: pleas_dir + 'assets-src/javascripts/vendor/',
     govuk_scripts: 'node_modules/govuk_frontend_toolkit/javascripts/**/*.js',
-    test_scripts: 'assets-src/tests/**/*.js',
-    images: 'assets-src/images/'
+    test_scripts: pleas_dir + 'assets-src/tests/**/*.js',
+    images: pleas_dir + 'assets-src/images/'
   };
 
   /**
@@ -46,17 +49,18 @@ module.exports = function(grunt) {
         expand: true,
         cwd: paths.styles,
         src: ['**/*.scss'],
-        dest: paths.dest_dir + 'stylesheets'
+        dest: paths.dest_dir + 'stylesheets',
+        ext: '.css'
       },
       options: {
         loadPath: [
           'node_modules/govuk_frontend_toolkit/',
           'node_modules/govuk_frontend_toolkit/stylesheets/',
-          'assets-src/stylesheets'
+          pleas_dir + 'assets-src/stylesheets'
         ]
       }
     },
-    
+
     jshint: {
       files: [
         'Gruntfile.js',
@@ -77,7 +81,7 @@ module.exports = function(grunt) {
         expand: true
       }
     },
-    
+
     concat: {
       js: {
         files: [
@@ -95,7 +99,7 @@ module.exports = function(grunt) {
         separator: ';',
       }
     },
-    
+
     imagemin: {
       files: {
         expand: true,
@@ -104,7 +108,7 @@ module.exports = function(grunt) {
         dest: paths.dest_dir + 'images'
       }
     },
-    
+
     watch: {
       assemble: {
         files: ['templates/**/*.hbs','templates/data.yml'],
@@ -164,7 +168,7 @@ module.exports = function(grunt) {
     'concat',
     'imagemin'
   ]);
-  
+
   grunt.registerTask('server', 'Fire up the dev static server and start watch task', ['concurrent:dev']);
 
 };
