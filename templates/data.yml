@@ -1,5 +1,5 @@
 topOfPage:
-pageTitle: 'Make your plea: Traffic offences'
+pageTitle: 'Make a plea: Traffic offences - GOV.UK'
 assetPath: /static/
 stylesheets: |
   <link rel="stylesheet" type="text/css" href="/static/stylesheets/application.css">
@@ -11,11 +11,12 @@ bodyClasses:
 cookieMessage: <p>GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a></p>
 headerClass:
 insideHeader:
-proposition_title: 'Make your plea: Traffic offences'
+proposition_title: 'Make a plea: Traffic offences'
 afterHeader:
 beforeContent:
-footerTop: <p class="footer-top"><a href="/terms-and-conditions-and-privacy-policy">Terms and Conditions and Privacy Policy</a></p>
+footerTop:
 footerSupportLinks: |
+  <li class="li-block"><a href="/terms-and-conditions-and-privacy-policy">Terms and Conditions and Privacy Policy</a></li>
   <li><a href="http://www.gov.uk/help">Help</a></li>
   <li><a href="http://www.gov.uk/help/cookies">Cookies</a></li>
   <li><a href="http://www.gov.uk/contact">Contact</a></li>
