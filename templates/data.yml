@@ -1,5 +1,5 @@
 topOfPage:
-pageTitle: 'Make your plea: Traffic offences'
+pageTitle: 'Make a Plea: Traffic offences - GOV.UK'
 assetPath: /static/
 stylesheets: |
   <link rel="stylesheet" type="text/css" href="/static/stylesheets/application.css">
@@ -7,21 +7,29 @@ stylesheets: |
   <!--[if IE 7]><link href="/static/stylesheets/application-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
   <!--[if IE 8]><link href="/static/stylesheets/application-ie8.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
 head:
-bodyClasses:
-cookieMessage:
+bodyClasses: beta
+cookieMessage: '<p>GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a></p>'
 headerClass:
 insideHeader:
-proposition_title: 'Make your plea: Traffic offences'
+proposition_title: 'Make a Plea: Traffic offences'
 afterHeader:
-beforeContent:
-footerTop: <p class="footer-top"><a href="/terms-and-conditions-and-privacy-policy">Terms and Conditions and Privacy Policy</a></p>
+beforeContent: |
+  <div class="phase-banner">
+    <p><a href="https://www.gov.uk/service-manual/phases/beta.html" class="phase-tag">beta</a> This is a new service.</p>
+  </div>
+footerTop:
 footerSupportLinks: |
+  <li class="li-block"><a href="/terms-and-conditions-and-privacy-policy">Terms and Conditions and Privacy Policy</a></li>
   <li><a href="http://www.gov.uk/help">Help</a></li>
   <li><a href="http://www.gov.uk/help/cookies">Cookies</a></li>
   <li><a href="http://www.gov.uk/contact">Contact</a></li>
   <li><a href="http://www.gov.uk/cymraeg" lang="cy">Cymraeg</a></li>
 javascripts: |
-  <script src="/static/javascripts/vendor/jquery.details.min.js" type="text/javascript"></script>
   <script src="/static/javascripts/govuk.js" type="text/javascript"></script>
   <script src="/static/javascripts/application.js" type="text/javascript"></script>
 bodyEnd:
+htmlLang: 'en'
+skipLinkMessage: 'Skip to main content'
+logoLinkTitle: 'Go to the GOV.UK homepage'
+crownCopyrightMessage: '&copy; Crown copyright'
+licenceMessage: '<p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>'
