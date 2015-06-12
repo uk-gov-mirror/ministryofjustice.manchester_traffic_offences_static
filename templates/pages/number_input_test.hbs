@@ -2,11 +2,17 @@
 pageTitle: Number input test
 ---
 
+<style type="text/css">
+  input:invalid {
+    background: #ffdddd;
+  }
+</style>
+
 <header class="page-header">
   <h1>Number inputs test</h1>
 </header>
 
-<form action="" method="get">
+<form id="test-form" action="" method="get" onsubmit="alertSubmit(); return false;" novalidate>
 
   <hr>
 
@@ -19,7 +25,6 @@ pageTitle: Number input test
 
       <div class="form-field">
         <input id="text_1" class="form-control" name="text_1" type="text">
-        <code class="value"></code>
       </div>
   </div>
 
@@ -30,7 +35,16 @@ pageTitle: Number input test
 
       <div class="form-field">
         <input id="text_2" class="form-control" name="text_2" type="text" pattern="\d*">
-        <code class="value"></code>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label for="text_3">
+          <span class="label-text">3. type="text" pattern="[0-9,.-]*"</span>
+      </label>
+
+      <div class="form-field">
+        <input id="text_3" class="form-control" name="text_3" type="text" pattern="[0-9,.-]*">
       </div>
   </div>
 
@@ -45,7 +59,6 @@ pageTitle: Number input test
 
       <div class="form-field">
         <input id="number_1" class="form-control" name="number_1" type="number">
-        <code class="value"></code>
       </div>
   </div>
 
@@ -56,7 +69,16 @@ pageTitle: Number input test
 
       <div class="form-field">
         <input id="number_2" class="form-control" name="number_2" type="number" pattern="\d*">
-        <code class="value"></code>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label for="number_3">
+          <span class="label-text">3. type="number" pattern="[0-9,.-]*"</span>
+      </label>
+
+      <div class="form-field">
+        <input id="number_3" class="form-control" name="number_3" type="number" pattern="[0-9,.-]*">
       </div>
   </div>
 
@@ -71,7 +93,6 @@ pageTitle: Number input test
 
       <div class="form-field">
         <input id="tel_1" class="form-control" name="tel_1" type="tel">
-        <code class="value"></code>
       </div>
   </div>
 
@@ -82,21 +103,36 @@ pageTitle: Number input test
 
       <div class="form-field">
         <input id="tel_2" class="form-control" name="tel_2" type="tel" pattern="\d*">
-        <code class="value"></code>
       </div>
+  </div>
+
+  <div class="form-group">
+      <label for="tel_3">
+          <span class="label-text">3. type="tel" pattern="[0-9,.-]*"</span>
+      </label>
+
+      <div class="form-field">
+        <input id="tel_3" class="form-control" name="tel_3" type="tel" pattern="[0-9,.-]*">
+      </div>
+  </div>
+
+  <div class="form-submit">
+      <button class="button" type="submit">Submit</button>
   </div>
 
 </form>
 
 <script>
+function alertSubmit() {
+  var inputs = document.getElementsByTagName('input');
+  var alertContent = '';
 
-var inputs = document.getElementsByTagName('input');
+  for (var i = 0; i < inputs.length; i++) {
+    alertContent += "Input " + (i+1) + " = " + inputs[i].value + "\n";
+  }
 
-for (var i = 0; i < inputs.length; i++) {
-  inputs[i].addEventListener('keyup',displayValue,false);
-}
+  alert(alertContent);
 
-function displayValue() {
-  this.nextElementSibling.innerHTML = this.value;
+  return false;
 }
 </script>

@@ -238,7 +238,16 @@ if(typeof String.prototype.trim !== 'function') {
 
     updateTotal: function() {
       var total = this.getTotal();
-      this.$total.text(total.toFixed(this.precision)).trigger('update.CalculateTotals');
+
+      total = this.formatNumber(total);
+      this.$total.text(total).trigger('update.CalculateTotals');
+    },
+
+    formatNumber: function(number) {
+      var parts = number.toFixed(this.precision).toString().split(".");
+          parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+      return parts.join(".");
     }
   };
 
@@ -350,6 +359,77 @@ if(typeof String.prototype.trim !== 'function') {
   };
 
 }());
+(function() {
+  "use strict";
+
+  window.moj = window.moj || { Modules: {}, Events: $({}) };
+
+  var ExternalLinksTracker = function($el, options) {
+    this.init($el, options);
+    return this;
+  };
+
+  ExternalLinksTracker.prototype = {
+    defaults: {
+      "eventCategory": "External links",
+      "eventAction": document.location.pathname
+    },
+
+    init: function($el, options) {
+      if (typeof ga === "undefined") return;
+
+      this.settings = $.extend({}, this.defaults, options);
+      this.cacheElements($el);
+      this.bindEvents();
+    },
+
+    cacheElements: function($el) {
+      this.$links = $el;
+    },
+
+    bindEvents: function() {
+      var self = this;
+
+      this.$links.on('click', function(event) {
+        event.preventDefault();
+        self.sendGAEvent($(this));
+      });
+    },
+
+    sendGAEvent: function($el) {
+      var self = this,
+          href = $el.attr("href"),
+          target = $el.attr("target");
+
+      ga("send",
+         "event",
+         self.settings.eventCategory,
+         href,
+         self.settings.eventAction,
+         {"hitCallback": self.openLink(href, target)}
+      );
+    },
+
+    openLink: function(href, target) {
+      if (target && !/^_(self|parent|top)$/i.test(target)) {
+        window.open(href, target);
+      }
+      else {
+        window.location.href = href;
+      }
+    }
+  };
+
+  moj.Modules._ExternalLinksTracker = ExternalLinksTracker;
+
+  moj.Modules.ExternalLinksTracker = {
+    init: function() {
+      $('a[rel=external]').each(function() {
+        $(this).data('ExternalLinksTracker', new ExternalLinksTracker($(this), $(this).data()));
+      });
+    }
+  };
+}());
 /**
  * Page exit prompt
  *
@@ -375,6 +455,7 @@ if(typeof String.prototype.trim !== 'function') {
     init: function(options) {
       this.settings = $.extend({}, this.defaults, options);
       this.enable();
+      this.initMetaRefresh();
       this.hashedFields = this.hashFields();
       this.bindEvents();
     },
@@ -387,7 +468,7 @@ if(typeof String.prototype.trim !== 'function') {
       });
 
       $(window).on('beforeunload', function() {
-        self.runCheck();
+        return self.runCheck();
       });
     },
 
@@ -402,7 +483,7 @@ if(typeof String.prototype.trim !== 'function') {
     runCheck: function() {
       var self = this;
 
-      if (this.isEnabled && this.fieldsHaveChanged()) {
+      if (this.isEnabled && this.fieldsHaveChanged() && this.isMetaRefresh() === false) {
         return self.settings.message;
       }
     },
@@ -413,14 +494,40 @@ if(typeof String.prototype.trim !== 'function') {
 
     disable: function() {
       this.isEnabled = false;
+    },
+
+    isMetaRefresh: function() {      
+      if (typeof this.metaRefreshAt !== 'undefined') {
+        var now = new Date().getTime();
+        
+        if (now >= this.metaRefreshAt) {
+          return true;
+        }
+      }
+
+      return false;
+    },
+
+    initMetaRefresh: function() {
+      var refreshTag = $('head').find('meta[http-equiv=refresh]');
+      
+      if (refreshTag.length) {
+        var refreshTimeoutLength = parseInt(refreshTag.attr('content').match(/^\d*/)[0]);
+        var now = new Date().getTime();
+        
+        this.metaRefreshAt = now + ((refreshTimeoutLength-1)*1000);
+      }
     }
   };
 
   moj.Modules._PromptOnChange = PromptOnChange;
-
+  
   moj.Modules.PromptOnChange = {
     init: function() {
-      return new PromptOnChange();
+      var options = {
+        message: $('[name=promptOnChangeMessage]').val() || "You have entered some information"
+      };
+      return new PromptOnChange(options);
     }
   };
 
@@ -471,7 +578,7 @@ if(typeof String.prototype.trim !== 'function') {
         $el = $($el.data('templateDelegate'));
       }
 
-      this.originalText = $el.text();
+      this.originalText = $el.eq(0).text();
 
       this.cacheElements($el);
 
@@ -480,7 +587,7 @@ if(typeof String.prototype.trim !== 'function') {
 
     cacheElements: function($el) {
       this.$element = $el;
-      this.$inputs = $('[name="' + this.trigger + '"]');
+      this.$inputs = $(':radio[name="' + this.trigger + '"]');
     },
 
     bindEvents: function() {
@@ -494,7 +601,10 @@ if(typeof String.prototype.trim !== 'function') {
     },
 
     getCurrentValue: function() {
-      return this.$inputs.filter(':checked').val();
+      var $currentSelection = this.$inputs.filter(':checked');
+      var currentValue = $currentSelection.attr('data-template-value') || $currentSelection.parent('label').text();
+
+      return currentValue.trim();
     },
 
     formatValue: function(value) {
@@ -539,4 +649,6 @@ $(document).ready(function () {
     var selectionButtons = new GOVUK.SelectionButtons($("label input[type='radio'], label input[type='checkbox']"));
 
     $('details').details();
+
+    $('[name^=nojs]').remove();
 });

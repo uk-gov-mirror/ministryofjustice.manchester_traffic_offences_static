@@ -535,13 +535,7 @@ details .panel-indent {
         font-size: 14px;
         line-height: 1.14286; } }
   .phase-banner span {
-    display: -moz-inline-stack;
-    display: inline-block;
-    zoom: 1;
-    display: inline;
-    width: 75%;
     vertical-align: top;
-    width: auto;
     vertical-align: baseline; }
 
 .column-quarter {
@@ -1061,7 +1055,7 @@ fieldset {
   margin: -2px 5px 0 0; }
 
 .validation-summary {
-  border: 3px solid #df3034;
+  border: 3px solid #b10e1e;
   padding: 15px 30px;
   margin-bottom: 30px; }
 
@@ -1086,7 +1080,7 @@ fieldset {
   margin-bottom: 5px; }
 
 .validation-summary a {
-  color: #df3034; }
+  color: #b10e1e; }
 
 .validation-summary .heading-small {
   margin-top: 15px; }
@@ -1098,7 +1092,7 @@ fieldset {
   line-height: 1.25;
   font-weight: 400;
   text-transform: none;
-  color: #df3034; }
+  color: #b10e1e; }
   @media (max-width: 640px) {
     .validation-message {
       font-size: 14px;
@@ -1221,7 +1215,7 @@ input[type=number] {
   width: 70px; }
 
 .validation-summary {
-  border: 3px solid #df3034;
+  border: 3px solid #b10e1e;
   padding: 15px 30px;
   margin-bottom: 30px; }
 
@@ -1246,7 +1240,7 @@ input[type=number] {
   margin-bottom: 5px; }
 
 .validation-summary a {
-  color: #df3034; }
+  color: #b10e1e; }
 
 .validation-summary .heading-small {
   margin-top: 15px; }
@@ -1258,7 +1252,7 @@ input[type=number] {
   line-height: 1.25;
   font-weight: 400;
   text-transform: none;
-  color: #df3034; }
+  color: #b10e1e; }
   @media (max-width: 640px) {
     .validation-message {
       font-size: 14px;
@@ -1312,13 +1306,7 @@ GOV.UK Toolkit/Template overrides
         font-size: 14px;
         line-height: 1.14286; } }
   .phase-banner span {
-    display: -moz-inline-stack;
-    display: inline-block;
-    zoom: 1;
-    display: inline;
-    width: 75%;
     vertical-align: top;
-    width: auto;
     vertical-align: baseline; }
   .phase-banner .phase-tag {
     vertical-align: baseline; }
@@ -1400,7 +1388,7 @@ Forms
         line-height: 1.2; } }
   .form-group .errorlist, .form-group-wide .errorlist {
     margin: .25em 0;
-    color: #df3034; }
+    color: #b10e1e; }
   .form-group .block-label, .form-group-wide .block-label {
     font-family: "nta", Arial, sans-serif;
     font-size: 24px;
@@ -1486,13 +1474,13 @@ legend.form-label-bold {
 /*== Error styles ==================================*/
 .form-group .validation-message .errorlist, .form-group-wide .validation-message .errorlist {
   margin: .25em 0;
-  color: #df3034; }
+  color: #b10e1e; }
 
 .error-summary {
   margin: 2em 0;
   padding: 15px 15px 0;
   background: #fef7f7;
-  border: 4px solid #df3034; }
+  border: 4px solid #b10e1e; }
   .error-summary h2 {
     margin-top: 0; }
   .error-summary .errors-list a {
@@ -1504,7 +1492,7 @@ legend.form-label-bold {
 
 .with-error {
   padding-left: 15px;
-  border-left: 4px solid #df3034; }
+  border-left: 4px solid #b10e1e; }
 
 /*== Modifiers ========================================*/
 .form-field-prefix {
