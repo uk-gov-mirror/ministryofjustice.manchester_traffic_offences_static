@@ -1,0 +1,138 @@
+---
+pageTitle: Number input test
+---
+
+<style type="text/css">
+  input:invalid {
+    background: #ffdddd;
+  }
+</style>
+
+<header class="page-header">
+  <h1>Number inputs test</h1>
+</header>
+
+<form id="test-form" action="" method="get" onsubmit="alertSubmit(); return false;" novalidate>
+
+  <hr>
+
+  <h2 class="heading-large">Text inputs: type="text"</h2>
+  
+  <div class="form-group">
+      <label for="text_1">
+          <span class="label-text">1. type="text"</span>
+      </label>
+
+      <div class="form-field">
+        <input id="text_1" class="form-control" name="text_1" type="text">
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label for="text_2">
+          <span class="label-text">2. type="text" pattern="\d*"</span>
+      </label>
+
+      <div class="form-field">
+        <input id="text_2" class="form-control" name="text_2" type="text" pattern="\d*">
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label for="text_3">
+          <span class="label-text">3. type="text" pattern="[0-9,.-]*"</span>
+      </label>
+
+      <div class="form-field">
+        <input id="text_3" class="form-control" name="text_3" type="text" pattern="[0-9,.-]*">
+      </div>
+  </div>
+
+  <hr>
+
+  <h2 class="heading-large">Number inputs: type="number"</h2>
+
+  <div class="form-group">
+      <label for="number_1">
+          <span class="label-text">1. type="number"</span>
+      </label>
+
+      <div class="form-field">
+        <input id="number_1" class="form-control" name="number_1" type="number">
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label for="number_2">
+          <span class="label-text">2. type="number" pattern="\d*"</span>
+      </label>
+
+      <div class="form-field">
+        <input id="number_2" class="form-control" name="number_2" type="number" pattern="\d*">
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label for="number_3">
+          <span class="label-text">3. type="number" pattern="[0-9,.-]*"</span>
+      </label>
+
+      <div class="form-field">
+        <input id="number_3" class="form-control" name="number_3" type="number" pattern="[0-9,.-]*">
+      </div>
+  </div>
+
+  <hr>
+
+  <h2 class="heading-large">tel inputs: type="tel"</h2>
+
+  <div class="form-group">
+      <label for="tel_1">
+          <span class="label-text">1. type="tel"</span>
+      </label>
+
+      <div class="form-field">
+        <input id="tel_1" class="form-control" name="tel_1" type="tel">
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label for="tel_2">
+          <span class="label-text">2. type="tel" pattern="\d*"</span>
+      </label>
+
+      <div class="form-field">
+        <input id="tel_2" class="form-control" name="tel_2" type="tel" pattern="\d*">
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label for="tel_3">
+          <span class="label-text">3. type="tel" pattern="[0-9,.-]*"</span>
+      </label>
+
+      <div class="form-field">
+        <input id="tel_3" class="form-control" name="tel_3" type="tel" pattern="[0-9,.-]*">
+      </div>
+  </div>
+
+  <div class="form-submit">
+      <button class="button" type="submit">Submit</button>
+  </div>
+
+</form>
+
+<script>
+function alertSubmit() {
+  var inputs = document.getElementsByTagName('input');
+  var alertContent = '';
+
+  for (var i = 0; i < inputs.length; i++) {
+    alertContent += "Input " + (i+1) + " = " + inputs[i].value + "\n";
+  }
+
+  alert(alertContent);
+
+  return false;
+}
+</script>

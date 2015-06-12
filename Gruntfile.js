@@ -108,7 +108,7 @@ module.exports = function(grunt) {
     watch: {
       assemble: {
         files: ['templates/**/*.hbs','templates/data.yml'],
-        tasks: ['assemble']
+        tasks: ['newer:assemble']
       },
       sass: {
         files: paths.styles,
@@ -134,7 +134,7 @@ module.exports = function(grunt) {
     connect: {
       server: {
         options: {
-          hostname: 'localhost',
+          hostname: '0.0.0.0',
           port: 9000,
           base: 'public_html',
           keepalive: true
