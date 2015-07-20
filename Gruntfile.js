@@ -30,14 +30,37 @@ module.exports = function(grunt) {
     assemble: {
       options: {
         partials: ['templates/partials/**/*.hbs'],
-        layout: ['templates/layouts/default.hbs'],
-        data: 'templates/data.yml',
         helpers: ['helpers/**/*.js'],
+        data: 'templates/data.yml',
         flatten: true,
       },
-      files: {
+      pages: {
+        options: {
+          layout: ['templates/layouts/default.hbs']
+        },
         src: ['templates/pages/*.hbs'],
-        dest: 'public_html'
+        dest: 'public_html/',
+      },
+      emails: {
+        options: {
+          layout: ['templates/layouts/email.hbs']
+        },
+        src: ['templates/emails/*.hbs'],
+        dest: 'emails/src/'
+      }
+    },
+
+    emailBuilder: {
+      inline: {
+        options: {
+          encodeSpecialChars: true
+        },
+        files : [{
+          expand: true,
+          cwd: 'emails/src/',
+          src: ['**/*.html'],
+          dest: 'emails/inlined/',
+        }]
       }
     },
 
@@ -107,8 +130,12 @@ module.exports = function(grunt) {
     
     watch: {
       assemble: {
-        files: ['templates/**/*.hbs','templates/data.yml'],
-        tasks: ['newer:assemble']
+        files: ['templates/pages/*.hbs','templates/data.yml', 'templates/layouts/default.hbs', 'templates/partials/pages/*.hbs'],
+        tasks: ['newer:assemble:pages']
+      },
+      assembleEmails: {
+        files: ['templates/emails/*.hbs', 'templates/emails.yml', 'templates/layouts/email.hbs', 'templates/partials/emails/*.hbs'],
+        tasks: ['emails']
       },
       sass: {
         files: paths.styles,
@@ -157,12 +184,17 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['build']);
 
   grunt.registerTask('build', 'Lint, test and compile prod-ready assets', [
-    'assemble',
+    'assemble:pages',
     'sass',
     'jshint',
     'copy',
     'concat',
-    'imagemin'
+    'imagemin',
+  ]);
+
+  grunt.registerTask('emails', 'Build emails with styles inlined', [
+    'assemble:emails',
+    'emailBuilder:inline'
   ]);
   
   grunt.registerTask('server', 'Fire up the dev static server and start watch task', ['concurrent:dev']);
