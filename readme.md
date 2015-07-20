@@ -1,6 +1,6 @@
-# Manchester Traffic Offences - static pages builder
+# Manchester Traffic Offences - static pages and email builder
 
-Static page builder using Handlebars templates.
+Static pages and email builder using Handlebars templates.
 
 ## Installation
 
@@ -18,15 +18,40 @@ npm install -g grunt-cli
 
 ## Build
 
-The assets and HTML files can be generated without running the server or the `watch` task. Simply call the `build` Grunt task:
+### Pages
+
+The assets and HTML files for site pages can be generated without running the server or the `watch` task. Simply call the `build` Grunt task:
 
 ```
 grunt build
 ```
 
+This task will compile Handlebars templates, lint JS, concatenate and minify assets (JS/CSS), and optimise images. The resulting build is found in `public_html/`.
+
+### Emails
+
+To build emails from the template, run the `emails` task:
+
+```
+grunt emails
+```
+
+This task will compile the emails from the templates into `emails/src/`, replace relative URLs hrefs starting with `/` to their absolute version (using the `baseURL` variable in Gruntfile), and a copy with CSS inlined will be added to `emails/inlined/` for convenience.
+
+
 ## Local development
 
-Run the local server:
+### Watch task
+
+If a server is not required (for example when working on emails), the `watch` task can be run on its own, and will automatically build the relevant files when it detects an update to any template or asset:
+
+```
+grunt watch
+```
+
+### Local server
+
+To start the local server, run:
 
 ```
 grunt server
