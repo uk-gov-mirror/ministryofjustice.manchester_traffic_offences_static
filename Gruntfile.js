@@ -6,6 +6,8 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
   grunt.loadNpmTasks('assemble');
 
+  var baseURL = 'https://www.makeaplea.justice.gov.uk';
+
   var paths = {
     dest_dir: 'public_html/assets/',
     src_dir: 'assets-src/',
@@ -50,10 +52,26 @@ module.exports = function(grunt) {
       }
     },
 
-    emailBuilder: {
+    'regex-replace': {
+      addBaseURL: {
+        src: ['emails/src/**/*.html'],
+        actions: [
+          {
+            name: "absolute-urls",
+            search: /href="(\/+.[^"]*)"/g,
+            replace: 'href="' + baseURL + '$1"'
+          }
+        ]
+      }
+    },
+
+    juice: {
       inline: {
         options: {
-          encodeSpecialChars: true
+          removeStyleTags: false,
+          webResources: {
+            images: false
+          }
         },
         files : [{
           expand: true,
@@ -194,7 +212,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('emails', 'Build emails with styles inlined', [
     'assemble:emails',
-    'emailBuilder:inline'
+    'regex-replace',
+    'juice'
   ]);
   
   grunt.registerTask('server', 'Fire up the dev static server and start watch task', ['concurrent:dev']);
