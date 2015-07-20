@@ -1,15 +1,165 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <title>Email subject/title</title>
   
+  <style type="text/css">
+      /* Clients overrides */
+      @-ms-viewport {width: device-width;} /* Windows Phone 8 responsiveness */
+      #outlook a{padding:0;} /* Force Outlook to provide a "view in browser" message */
+      .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display emails at full width */
+      .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Force Hotmail to display normal line spacing */
+      body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+      table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+      img{-ms-interpolation-mode:bicubic; border:none;} /* Allow smoother rendering of resized image in Internet Explorer */
+
+      /* Reset styles */
+      body{margin:0; padding:0;}
+      img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+      table{border-collapse:collapse !important;}
+      body, #bodyTable, #bodyCell{height:100% !important; margin:0; width:100% !important;}
+
+      /* Template */
+      body {
+        background-color: #f2f2f2;
+      }
+
+      #bodyCell {
+        background-color: #f2f2f2;
+        vertical-align: top;
+        font-size: 0;
+      }
+
+      .templateContainer {
+        max-width: 600px;
+      }
+
+      /* Typography */
+      h1, h2, h3, h4 {
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        line-height: 1.125;
+        background-color: transparent;
+        border: none;
+        color: #000000;
+      }
+
+      h1 {
+        font-size: 32px;
+        margin: 10px 0 18px;
+      }
+
+      h2 {
+        font-size: 28px;
+        margin: 36px 0 18px;
+      }
+
+      h3 {
+        font-size: 22px;
+        margin: 36px 0 18px;
+      }
+
+      p {
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        line-height: 1.25;
+        margin: 18px 0;
+        color: #000000;
+      }
+
+      ul,
+      ol {
+        padding: 0;
+        margin: 18px 0 18px 18px;
+      }
+
+      li {
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        line-height: 1.25;
+        color: #000000;
+      }
+
+      a {
+        background-color: transparent;
+        text-decoration: underline;
+        border: none;
+        color: #005ea5;
+      }
+
+      /* Modifiers */
+      p.lede {
+        font-size: 22px;
+      }
+   
+
+      /* Main areas */
+      #headerCell {
+        background-color: #0b0c0c;
+        color: #ffffff;
+        text-align: left;
+      }
+
+      #logo {
+        font-family: Arial, sans-serif;
+        color: #ffffff;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      #contentCell {
+        background-color: #ffffff;
+        padding: 20px;
+        text-align: left;
+      }
+
+      #footerCell {
+        background-color: #f2f2f2;
+        padding: 10px 20px;
+        text-align: left;
+      }
+
+      #footerCell ul {
+        margin: 13px 0 13px 16px;
+      }
+
+      #footerCell p,
+      #footerCell li {
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        line-height: 1.25;
+        color: #777777;
+      }
+
+      #footerCell p {
+        margin: 13px 0;
+      }
+
+      #footerCell a {
+        text-decoration: underline;
+        color: #777777;
+      }
+
+
+      /* Responsiveness */
+      /* Fix for Apple Mail, which does not respect max-width but does media queries */
+      @media screen and (min-width: 601px) {
+          .templateContainer {
+              width: 560px !important;
+          }
+      }
+
+    </style>
 </head>
 <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0; background-color: #f2f2f2; height: 100%; width: 100%;">
   <center>
     <table align="center" border="0" cellpadding="20" cellspacing="0" height="100%" width="100%" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
       <tr>
-        <td align="center" valign="top" id="bodyCell" style="-webkit-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; vertical-align: top; font-size: 0; text-align: center; background-color: #f2f2f2; margin: 0; width: 100%; height: 100%;">
+        <td align="center" valign="top" id="bodyCell" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; background-color: #f2f2f2; vertical-align: top; font-size: 0; height: 100%; width: 100%;">
 
           <!--[if (gte mso 9)|(IE)]>
           <table width="600" align="center" cellpadding="0" cellspacing="0" border="0">
@@ -19,9 +169,9 @@
 
           <table class="templateContainer" align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; max-width: 600px; border-collapse: collapse;">
             <tr>
-              <td id="headerCell" bgcolor="#000000" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #000000; color: #ffffff; text-align: left;">
+              <td id="headerCell" bgcolor="#000000" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #0b0c0c; color: #ffffff; text-align: left;">
                 <a href="https://www.gov.uk" title="Go to the GOV.UK homepage" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: transparent; text-decoration: underline; border: none; color: #005ea5;">
-                  <img src="https://www.makeaplea.justice.gov.uk/static/images/email/gov-uk-logo.png" alt="GOV.UK" width="211" height="53" style="-ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;">
+                  <img id="logo" src="https://www.makeaplea.justice.gov.uk/static/images/email/gov-uk-logo.png" alt="GOV.UK" width="211" height="53" style="-ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; font-family: Arial, sans-serif; color: #ffffff; font-size: 28px; font-weight: bold;">
                 </a>
               </td>
             </tr>
@@ -29,18 +179,19 @@
           <table class="templateContainer" align="center" border="0" cellpadding="00" cellspacing="0" width="100%" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; max-width: 600px; border-collapse: collapse;">
             <tr>
               <td id="contentCell" bgcolor="#ffffff" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; padding: 20px; text-align: left;">
-                <h1 style="font-family: Arial, sans-serif; font-weight: bold; line-height: 1.25; background-color: transparent; border: none; color: #000000; font-size: 32px; margin: 10px 0 18px;">A rather long title for the email to check wrapping and line-height</h1>
+
+                <h1 style="font-family: Arial, sans-serif; font-weight: bold; line-height: 1.125; background-color: transparent; border: none; color: #000000; font-size: 32px; margin: 10px 0 18px;">A rather long title for the email to check wrapping and line-height</h1>
 
 <p class="lede" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, sans-serif; line-height: 1.25; margin: 18px 0; color: #000000; font-size: 22px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, dolore.</p>
 
-<h2 style="font-family: Arial, sans-serif; font-weight: bold; line-height: 1.25; background-color: transparent; border: none; color: #000000; font-size: 28px; margin: 36px 0 18px;">Lorem ipsum dolor</h2>
+<h2 style="font-family: Arial, sans-serif; font-weight: bold; line-height: 1.125; background-color: transparent; border: none; color: #000000; font-size: 28px; margin: 36px 0 18px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, vero!</h2>
 
-<ul style="padding-left: 18px; margin: 18px 0;">
-  <li style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, sans-serif; font-size: 18px; line-height: 1.25; color: #000000;">Lorem ipsum dolor sit amet, <a href="#" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: transparent; text-decoration: underline; border: none; color: #005ea5;">consectetur adipisicing</a> elit.</li>
+<ul style="padding: 0; margin: 18px 0 18px 18px;">
+  <li style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, sans-serif; font-size: 18px; line-height: 1.25; color: #000000;">Lorem ipsum dolor sit amet, <a href="https://www.makeaplea.justice.gov.uk/test/test" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: transparent; text-decoration: underline; border: none; color: #005ea5;">consectetur adipisicing</a> elit.</li>
   <li style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, sans-serif; font-size: 18px; line-height: 1.25; color: #000000;">Numquam eos, illum, consectetur distinctio velit nam sunt.</li>
 </ul>
 
-<h2 style="font-family: Arial, sans-serif; font-weight: bold; line-height: 1.25; background-color: transparent; border: none; color: #000000; font-size: 28px; margin: 36px 0 18px;"><a href="#" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: transparent; text-decoration: underline; border: none; color: #005ea5;">Lorem ipsum</a></h2>
+<h2 style="font-family: Arial, sans-serif; font-weight: bold; line-height: 1.125; background-color: transparent; border: none; color: #000000; font-size: 28px; margin: 36px 0 18px;"><a href="https://www.makeaplea.justice.gov.uk/test" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: transparent; text-decoration: underline; border: none; color: #005ea5;">Lorem ipsum</a></h2>
 
 <p style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, sans-serif; font-size: 18px; line-height: 1.25; margin: 18px 0; color: #000000;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum ratione ab beatae voluptas sapiente temporibus rerum magni, reprehenderit aut molestiae repudiandae dolores facilis explicabo animi, libero laboriosam quis, omnis repellat.</p>
 
@@ -48,9 +199,10 @@
 
 <p style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, sans-serif; font-size: 18px; line-height: 1.25; margin: 18px 0; color: #000000;"><strong>lorem:</strong><br>Lorem ipsum dolor<br>sit amet<br>consectetur</p>
 
-<h3 style="font-family: Arial, sans-serif; font-weight: bold; line-height: 1.25; background-color: transparent; border: none; color: #000000; font-size: 22px; margin: 36px 0 18px;">Lorem ipsum dolor</h3>
+<h3 style="font-family: Arial, sans-serif; font-weight: bold; line-height: 1.125; background-color: transparent; border: none; color: #000000; font-size: 22px; margin: 36px 0 18px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, ratione.</h3>
 
-<p style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, sans-serif; font-size: 18px; line-height: 1.25; margin: 18px 0; color: #000000;">Lorem ipsum dolor sit amet, <a href="#" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: transparent; text-decoration: underline; border: none; color: #005ea5;">consectetur</a> adipisicing elit. Autem, iusto.</p>
+<p style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, sans-serif; font-size: 18px; line-height: 1.25; margin: 18px 0; color: #000000;">Lorem ipsum dolor sit amet, <a href="https://www.makeaplea.justice.gov.uk/test.html" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: transparent; text-decoration: underline; border: none; color: #005ea5;">consectetur</a> adipisicing elit. Autem, iusto.</p>
+
 
 
               </td>
@@ -59,14 +211,14 @@
           <table class="templateContainer" align="center" border="0" cellpadding="00" cellspacing="0" width="100%" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; max-width: 600px; border-collapse: collapse;">
             <tr>
               <td id="footerCell" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f2f2f2; padding: 10px 20px; text-align: left;">
-                <p style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.25; color: #777777; margin: 13px 0;">If you're unsure an email is from the Ministry of Justice:</p>
+                <p style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.25; margin: 13px 0; color: #777777;">If you're unsure an email is from the Ministry of Justice:</p>
 
-                <ul style="margin: 13px 0; padding-left: 13px;">
+                <ul style="padding: 0; margin: 13px 0 13px 16px;">
                     <li style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.25; color: #777777;">do not reply to it or click any links</li>
                     <li style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.25; color: #777777;">forward it to <a href="mailto:feedback@makeaplea.gov.uk" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: transparent; border: none; text-decoration: underline; color: #777777;">feedback@makeaplea.gov.uk</a></li>
                 </ul>
 
-                <p style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.25; color: #777777; margin: 13px 0;"><a href="https://www.makeaplea.justice.gov.uk/terms-and-conditions-and-privacy-policy" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: transparent; border: none; text-decoration: underline; color: #777777;">Terms and Conditions and privacy policy</a></p>
+                <p style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.25; margin: 13px 0; color: #777777;"><a href="https://www.makeaplea.justice.gov.uk/terms-and-conditions-and-privacy-policy" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: transparent; border: none; text-decoration: underline; color: #777777;">Terms and Conditions and privacy policy</a></p>
               </td>
             </tr>
           </table>
